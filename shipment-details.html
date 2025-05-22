@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shipment Tracker</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-[#f4f8fb] min-h-screen p-6 font-sans">
+
+  <div
+    class="bg-white rounded-xl shadow-md p-6 grid grid-cols-1 md:grid-cols-3 mb-6 border border-gray-200 ring-1 ring-gray-100 transition-shadow hover:shadow-lg">
+
+    <!-- Container Info -->
+    <h2 class="text-gray-500 text-sm font-semibold mb-3">SHIPMENT SUMMARY</h2>
+
+
+<div class="md:col-span-3 border-t border-gray-200 pt-6 relative">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-sm text-gray-700 mb-4">
+    <div><strong>Booking Number:</strong> EBKG12389746</div>
+    <div><strong>Carrier SCAC:</strong> MSCU</div>
+    <div><strong>Carrier Name:</strong> MSC-MEDITERRANEAN SHIPPING COMPANY SA</div>
+    <div><strong>Voyage Number:</strong> IV515A</div>
+    <div><strong>Vessel Name:</strong> MSC MATTINA</div>
+    <div><strong>Vessel IMO:</strong> 9315915</div>
+    <div><strong>Voyage Number:</strong> IU515A</div>
+    <div><strong>Vessel Name:</strong> MSC YAMUNA VI</div>
+    <div><strong>Vessel IMO:</strong> 9288409</div>
+  </div>
+
+  <div class="flex justify-end gap-2 mt-4">
+    <button class="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm shadow-md">
+      🔔 Receive Alerts
+    </button>
+
+    <button class="flex items-center bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm font-medium py-2 px-4 rounded shadow-sm">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12v.01M12 4l8 8-8 8M12 4v16" />
+      </svg>
+      Share
+    </button>
+  </div>
+
+  <div class="mt-4 text-right">
+    <a href="#" class="text-blue-600 hover:underline text-sm">View More Details</a>
+  </div>
+</div>
+
+
+  </div>
+
+
+  <!-- Tabs -->
+  <div class="flex rounded-t-lg overflow-hidden text-sm font-medium border border-b-0 border-gray-200 bg-white mb-0">
+    <button onclick="showTab('status')" id="tab-status"
+      class="flex-1 text-blue-600 font-semibold py-3 text-center hover:bg-blue-200">▶ STATUS</button>
+    <!-- <button onclick="showTab('map')" id="tab-map" class="flex-1 text-gray-600 py-3 text-center hover:bg-gray-100">🗺 MAP</button> -->
+    <button onclick="showTab('details')" id="tab-details"
+      class="flex-1 text-gray-600 py-3 text-center hover:bg-blue-200">ℹ DETAILS</button>
+  </div>
+
+  <!-- Content Tabs -->
+  <div id="content-status" class="hidden bg-white border border-t-0 rounded-b-lg shadow-md p-6">
+    <div class="flex flex-col items-center space-y-4">
+      <div class="flex justify-between w-full text-center text-sm text-gray-700 font-semibold">
+        <span>ORIGIN</span>
+        <span>POL</span>
+        <span>1 TRANSSHIPMENT</span>
+        <span>POD</span>
+        <span>DESTINATION</span>
+      </div>
+
+      <!-- Timeline -->
+      <div class="w-full flex items-center justify-between relative mt-4">
+        <div class="absolute top-1/2 left-0 right-0 h-1 bg-gray-200 z-0"></div>
+        <div class="absolute top-1/2 left-0 w-1/3 h-1 bg-green-500 z-10"></div>
+        <div class="absolute top-1/2 left-1/3 w-1/6 h-1 bg-blue-500 z-10"></div>
+
+        <!-- Checkpoints -->
+        <div class="relative z-20 flex flex-col items-center text-xs text-gray-500">
+          <div class="bg-green-500 w-4 h-4 rounded-full mb-1"></div>
+          <div>--</div>
+        </div>
+        <div class="relative z-20 flex flex-col items-center text-xs text-gray-500">
+          <div class="bg-green-500 w-4 h-4 rounded-full mb-1"></div>
+          <div>2025-05-07</div>
+        </div>
+        <div class="relative z-20 flex flex-col items-center text-xs text-gray-500">
+          <div class="bg-blue-500 w-4 h-4 rounded-full mb-1"></div>
+          <div>2025-05-20</div>
+        </div>
+        <div class="relative z-20 flex flex-col items-center text-xs text-gray-500">
+          <div class="bg-gray-300 w-4 h-4 rounded-full mb-1"></div>
+          <div>2025-06-26</div>
+        </div>
+        <div class="relative z-20 flex flex-col items-center text-xs text-gray-500">
+          <div class="bg-gray-300 w-4 h-4 rounded-full mb-1"></div>
+          <div>--</div>
+        </div>
+      </div>
+
+      <!-- Status Labels -->
+      <div class="flex justify-between w-full text-xs mt-2 text-center">
+        <span class="text-yellow-700 bg-yellow-100 px-2 py-1 rounded">WAS 8 DAYS IN POL</span>
+        <span class="text-red-700 bg-red-100 px-2 py-1 rounded">CURRENTLY 3 DAYS IN TSP1</span>
+        <span class="text-gray-600 bg-gray-100 px-2 py-1 rounded">expected in 39 days<br>2025-06-26</span>
+      </div>
+
+      <!-- Footer status -->
+      <div class="mt-6">
+        <span class="inline-block bg-blue-600 text-white text-sm px-6 py-2 rounded-full">IN TRANSSHIPMENT</span>
+      </div>
+    </div>
+
+
+
+    <div class="relative py-20 flex justify-center">
+      <ol class="relative border-s border-gray-200 dark:border-gray-700">
+        <li class="mb-10 ms-6">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+          </span>
+          <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Timeline Title<span
+              class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span>
+          </h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on January
+            13th, 2022</time>
+          <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Shipment arrived at Port-1</p>
+         
+        </li>
+        <li class="mb-10 ms-6">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Timeline Title 2</h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on
+            December 7th, 2021</time>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Shipment at port-2</p>
+        </li>
+        <li class="mb-10 ms-6">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Timeline Title 3</h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on
+            December 2nd, 2021</time>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Shipment reached at port 4.</p>
+        </li>
+        <li class="ms-6">
+          <span
+            class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-white dark:ring-gray-900 dark:bg-blue-900">
+            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+            </svg>
+          </span>
+          <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Timeline Title 4</h3>
+          <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Released on
+            December 2nd, 2021</time>
+          <p class="text-base font-normal text-gray-500 dark:text-gray-400">Shipment reached at port 5.</p>
+        </li>
+      </ol>
+    </div>
+
+
+
+  </div>
+
+  <!-- MAP Tab -->
+  <div id="content-map" class=" bg-white border border-t-0 rounded-b-lg shadow-md p-6">
+    <div class="text-center text-gray-700">
+      🗺️ <strong>Map View:</strong> Visual representation of route will appear here.
+    </div>
+  </div>
+
+  <!-- DETAILS Tab -->
+  <div id="content-details" class=" bg-white border border-t-0 rounded-b-lg shadow-md p-6">
+
+
+    <div class="max-w-7xl mx-auto px-4 py-8 space-y-8">
+
+
+      <div
+        class="bg-white p-3">
+        <h2 class="text-lg font-semibold">Shipment Details</h2>
+        <div class="grid grid-cols-2 gap-4 text-sm">
+          <div><strong>Container Count:</strong> 1</div>
+          <div><strong>Container #:</strong> ONEU5662691</div>
+        </div>
+        <div class="overflow-x-auto mt-4">
+
+        
+        <table class="w-full mt-4 text-sm table-auto border border-gray-200">
+          <thead class="bg-gray-50 text-left">
+            <tr>
+              <th class="p-2">Bill</th>
+              <th class="p-2">Consignee</th>
+              <th class="p-2">Deliver To</th>
+              <th class="p-2">Pickup From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2">LEXMANS#85</td>
+              <td class="p-2">PURDSL LLC</td>
+              <td class="p-2">Leeson Ln, Cocoa, US</td>
+              <td class="p-2">SEZ, Nadiad, Gujarat, India</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Packing Details -->
+       <hr class="my-4 border-t-2 sm:border-t-2 md:border-t-2 lg:border-t-2 border-gray-200 dark:border-gray-600" />
+      <div
+        class="bg-white p-3">
+        <h2 class="text-lg font-semibold mb-4">Packing Details</h2>
+        <div class="overflow-x-auto mt-4">
+        <table class="w-full text-sm table-auto border border-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="p-2 text-left">Shipper</th>
+              <th class="p-2 text-left">Quantity</th>
+              <th class="p-2 text-left">Goods</th>
+              <th class="p-2 text-left">Origin</th>
+              <th class="p-2 text-left">Destination</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2">PURDSL PERFORMANCE HOSE LLP</td>
+              <td class="p-2">0</td>
+              <td class="p-2">SILICONE HOSE</td>
+              <td class="p-2">India (JNCH)</td>
+              <td class="p-2">Los Angeles (USA)</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Container Details -->
+       <hr class="my-4 border-t-2 sm:border-t-2 md:border-t-2 lg:border-t-2 border-gray-200 dark:border-gray-600" />
+      <div
+        class="bg-white  p-3">
+        <h2 class="text-lg font-semibold mb-4">Container Details</h2>
+        <div class="overflow-x-auto mt-4">
+
+        <table class="w-full text-sm table-auto border border-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="p-2 text-left">Container #</th>
+              <th class="p-2 text-left">Shipment #</th>
+              <th class="p-2 text-left">Seal #</th>
+              <th class="p-2 text-left">Type</th>
+              <th class="p-2 text-left">Weight</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2">ONEU5662691</td>
+              <td class="p-2">SSWI00011808</td>
+              <td class="p-2">NAM4985</td>
+              <td class="p-2">40HC</td>
+              <td class="p-2">0.000 KG</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+      <!-- Documents -->
+        <hr class="my-4 border-t-2 sm:border-t-2 md:border-t-2 lg:border-t-2 border-gray-200 dark:border-gray-600" />
+      <div
+        class="bg-white  p-3">
+        <h2 class="text-lg font-semibold mb-4">Documents</h2>
+        <div class="overflow-x-auto mt-4">
+
+        <table class="w-full text-sm table-auto border border-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="p-2 text-left">Date</th>
+              <th class="p-2 text-left">Description</th>
+              <th class="p-2 text-left">Type</th>
+              <th class="p-2 text-left">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t">
+              <td class="p-2">Nov 7, 2024</td>
+              <td class="p-2">House Waybill</td>
+              <td class="p-2">PDF</td>
+              <td class="p-2 text-blue-600 underline cursor-pointer">Download</td>
+            </tr>
+            <tr class="border-t">
+              <td class="p-2">Nov 7, 2024</td>
+              <td class="p-2">Release Authority</td>
+              <td class="p-2">PDF</td>
+              <td class="p-2 text-blue-600 underline cursor-pointer">Download</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+  <script>
+    showTab('status');
+    function showTab(tab) {
+      const tabs = ['status', 'map', 'details'];
+      tabs.forEach(t => {
+        console.log("tab", t);
+        document.getElementById(`content-${t}`).classList.add('hidden');
+        document.getElementById(`content-${t}`).classList.remove('text-blue-600', 'bg-blue-100', 'font-semibold');
+        document.getElementById(`content-${t}`).classList.add('text-gray-600');
+      });
+
+      //bg-blue-100
+      document.getElementById(`tab-status`).classList.remove('bg-blue-100');
+      document.getElementById(`tab-details`).classList.remove('bg-blue-100');
+      document.getElementById(`tab-${tab}`).classList.add('bg-blue-100');
+
+
+      document.getElementById(`content-${tab}`).classList.remove('hidden');
+      //document.getElementById(`content-${tab}`).classList.add('text-blue-600', 'bg-blue-100', 'font-semibold');
+      document.getElementById(`content-${tab}`).classList.remove('text-gray-600');
+    }
+  </script>
+</body>
+
+</html>
